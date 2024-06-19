@@ -2,13 +2,22 @@ import React from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dimensions } from 'react-native';
+import PopularJobs from './HomePage/PopularJobs';
 
-
+const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
 
 const JobCard = ({ title, company, salary, location }) => {
+    const backgroundColor = getRandomColor();
     return (
         <View style={{
-            backgroundColor: '#5386E4',
+            backgroundColor: backgroundColor,
             borderRadius: 24,
             shadowColor: "#000", padding: 15, marginRight: 15
         }}>
@@ -36,6 +45,7 @@ const JobCard = ({ title, company, salary, location }) => {
 
 function HomePage() {
     return (
+        <>
         <ScrollView style={styles.container}>
             <View style={styles.header}>
                 <View>
@@ -89,7 +99,8 @@ function HomePage() {
 
                     <JobCard title="Chemistry Professor" company="UG" salary="$20,000" location="Legon, Ghana" />
 
-                    <JobCard title="PenTest Hacker" company="Amazon" salary="$220,000" location="Accra, Ghana" />
+                    <JobCard title="PenTest Hacker" company="Amazon" salary="$220,000" location="Accra, Ghana"
+                     />
     
         
 
@@ -98,8 +109,14 @@ function HomePage() {
                 </ScrollView>
             </View>
 
-        </ScrollView >
 
+
+   
+      <PopularJobs/>
+ 
+
+        </ScrollView >
+        </>
     );
 }
 
